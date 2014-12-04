@@ -36,5 +36,15 @@
 					  IsReadOnly="True"
 					  helpers:RowDoubleClickHandler.MethodName="Edit" />
 		</GroupBox>
+		
+		<GroupBox
+			Header="With Attached Property Using Command"
+			Grid.Row="1">
+            		<DataGrid DataContext="{Binding AttachedProperty}"
+					  ItemsSource="{Binding People}"
+					  SelectedItem="{Binding SelectedPerson}"
+					  IsReadOnly="True"
+					  helpers:RowDoubleClickCommandHandler.RowDoubleClick="{Binding RowDoubleClickCommand}" />
+        </GroupBox>
 	</Grid>
 </Window>
