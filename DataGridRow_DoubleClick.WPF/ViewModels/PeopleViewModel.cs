@@ -11,17 +11,7 @@ namespace DataGridRow_DoubleClick.WPF.ViewModels
 			People = new ObservableCollection<Person>();
 
 			CreatePeople();
-		}
-
-		public void Edit()
-		{
-			if (SelectedPerson != null)
-			{
-				// TODO: Do your edit logic here. Please don't actually show a MessageBox
-				//		 straight from your view model :)
-				var message = string.Format("{0} {1} was selected.", SelectedPerson.FirstName, SelectedPerson.LastName);
-				MessageBox.Show(message);
-			}
+            RowDoubleClickCommand = new RowDoubleClickCommand();
 		}
 
 		private void CreatePeople()
@@ -32,5 +22,14 @@ namespace DataGridRow_DoubleClick.WPF.ViewModels
 
 		public ObservableCollection<Person> People { get; set; }
 		public Person SelectedPerson { get; set; }
+
+	    public static readonly DependencyProperty RowDoubleClickCommandProperty =
+	        DependencyProperty.Register("RowDoubleClickCommand", typeof (ICommand), typeof (PeopleViewModel), new PropertyMetadata(default(ICommand)));
+
+	    public ICommand RowDoubleClickCommand
+	    {
+	        get { return (ICommand) GetValue(RowDoubleClickCommandProperty); }
+	        set { SetValue(RowDoubleClickCommandProperty, value); }
+	    }
 	}
 }
