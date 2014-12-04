@@ -14,6 +14,8 @@ namespace DataGridRow_DoubleClick.WPF.Helpers
                                                       if (row != null && row.IsSelected)
                                                       {
                                                           var command = GetRowDoubleClick(dataGrid);
+                                                          if(command == null) return;
+                                                          
                                                           if (command.CanExecute(row))
                                                           {
                                                               command.Execute(row);
